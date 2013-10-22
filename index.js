@@ -8,4 +8,12 @@ prerender.use(require('./lib/plugins/remove-script-tags'));
 // prerender.use(require('./lib/plugins/s3-html-cache'));
 prerender.use(require('./lib/plugins/http-headers'));
 
-prerender.createServer();
+this.set = function(name, value) {
+  prerender[name] = value;
+  return this;
+}
+
+this.start = function () {
+	prerender.createServer();
+	return this;
+}
